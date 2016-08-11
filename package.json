@@ -1,9 +1,10 @@
 {
-  "name": "auth0-react-sample",
+  "name": "auth0-profile",
   "version": "1.0.0",
-  "description": "A minimal reactJS sample application showing auth0 integration",
-  "repository": "https://github.com/auth0-samples/auth0-react-sample",
+  "description": "A widget to edit an Auth0 profile",
+  "repository": "https://github.com/bendyorke/auth0-profile",
   "license": "MIT",
+  "main": "src/Auth0Profile",
   "scripts": {
     "start": "cross-env NODE_ENV=development hjs-dev-server",
     "clean": "rimraf dist",

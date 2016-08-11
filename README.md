@@ -1,3 +1,7 @@
+## Development
+
+To run the development server, first run `npm install`, then `npm start`.  The project will run on `127.0.0.1:3000`
+
 ## Instantiating a Profile Widget
 
 ```
@@ -7,10 +11,24 @@ var Profile = new Auth0Profile(jwt, domain[, fields])
 Instantiating a new Profile Widget accepts 3 parameters:
 
 - jwt: A JSON Web Token for Auth0's v2 Management API (see here for details on how to get a jwt).
-- domain: Subdomain to make Auth0 api calls against (e.g. {tenant}.auth0.com).
-- fields (optional) : The fields and their configuration to use.  If this is omitted, or null, it will render default name and nickname fields.
+- domain: Domain to make Auth0 api calls against (e.g. {tenant}.auth0.com).
+- formConfig (optional) : Configuration object for the form. Currently accepts `title`, `subtitle`, and `fields`. `fields` is an array containing keys `name`, `label`, `hint`, `placeholder`, and `display`.
 
-Fields is an array, containing a hash of configuration parameters to be hashed out later.
+The formConfig for the sample is as follows:
+
+```
+{
+  title: 'Name and Details',
+  subtitle: 'Tell people a little bit about who you are.',
+  fields: [
+    {name: ['user_metadata.first_name', 'user_metadata.last_name'], label: 'First/Last Names', hint: 'Available publicly, but not shown on your profile'},
+    {name: 'user_metadata.full_name', label: 'Full Name', hint: 'Available publicly, but not shown on your profile'},
+    {name: 'user_metadata.display_name', label: 'Display Name', hint: 'Displayed on your profile and in other places as your name'},
+    {name: 'user_metadata.location', label: 'Location', hint: 'Where in the world are you?'},
+    {name: 'user_metadata.about_me', label: 'About Me', hint: 'Tell people a little about yourself'}
+  ]
+}
+```
 
 ## Rendering a Profile Widget
 
@@ -19,5 +37,11 @@ Profile.render(userId, elementSelector)
 ```
 
 Rendering a Profile Widget can be done by calling the render method, which accepts 2 parameters:
-- userId: a vaid Auth0 userId belonging to the subdomain
+- userId: a vaid Auth0 userId belonging to the provided domain
 - elementSelector: CSS selector respresenting the container in which to render the widget
+
+```
+Profile.createElement({userId, ...props})
+```
+
+Creates and returns a React element for the Profile Widget. `userId` is the only required prop.
