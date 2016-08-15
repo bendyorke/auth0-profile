@@ -35,15 +35,6 @@ var config = getConfig({
   }
 });
 
-config.entry = {
-  'auth0-profile': ['./src/Auth0Profile/index.js'],
-  'auth0-profile-site': config.entry
-}
-
-config.output.filename = '[name].js'
-
-console.log(config)
-
 // ENV variables
 const dotEnvVars = dotenv.config();
 const environmentEnv = dotenv.config({

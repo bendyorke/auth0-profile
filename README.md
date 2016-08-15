@@ -10,7 +10,7 @@ var Profile = new Auth0Profile(jwt, domain[, fields])
 
 Instantiating a new Profile Widget accepts 3 parameters:
 
-- jwt: A JSON Web Token for Auth0's v2 Management API (see here for details on how to get a jwt).
+- token: Either an ID Token, provided upon login, or a JSON Web Token for Auth0's v2 Management API.  ID Tokens are strongly recommended, as JSON Web Token's should not be accessible to clients.
 - domain: Domain to make Auth0 api calls against (e.g. {tenant}.auth0.com).
 - formConfig (optional) : Configuration object for the form. Currently accepts `title`, `subtitle`, and `fields`. `fields` is an array containing keys `name`, `label`, `hint`, `placeholder`, and `display`.
 

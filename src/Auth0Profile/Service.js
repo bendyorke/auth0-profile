@@ -24,7 +24,6 @@ export default class Auth0ProfileService {
   buildInit(init) {
     const { headers = {}, ...overrides } = init
 
-    console.log(this.jwt)
     return {
       method: 'GET',
       headers: { 'Authorization': 'Bearer ' + this.jwt, ...headers },

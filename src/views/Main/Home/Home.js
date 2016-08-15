@@ -17,7 +17,7 @@ export class Home extends React.Component {
     super(props, context)
     this.state = {
       profile: props.auth.getProfile(),
-      widget: new A0Profile(__AUTH0_JWT__, __AUTH0_DOMAIN__)
+      widget: new A0Profile(props.auth.getToken(), __AUTH0_DOMAIN__)
     }
     props.auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})

@@ -15,7 +15,7 @@ export default class Auth0ProfileComponent extends Component {
   }
 
   static propTypes = {
-    userId: T.string.isRequired(),
+    userId: T.string.isRequired,
     api: T.instanceOf(Auth0ProfileService),
     form: T.object,
   }
@@ -46,8 +46,8 @@ export default class Auth0ProfileComponent extends Component {
    * @param   coll      Object         - object on which to set the value
    * @return  Object
    */
-  update([key, ...path], val, coll = this.state.profile) {
-    coll[key] = path.length ? update(coll[key], path) : val
+  update = ([key, ...path], val, coll = this.state.profile) => {
+    coll[key] = path.length ? this.update(path, val, coll[key]) : val
     return coll
   }
 

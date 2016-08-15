@@ -1,6 +1,6 @@
 {
   "name": "auth0-profile",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A widget to edit an Auth0 profile",
   "repository": "https://github.com/bendyorke/auth0-profile",
   "license": "MIT",
